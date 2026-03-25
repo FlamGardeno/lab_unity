@@ -13,6 +13,7 @@ namespace IndieMarc.TopDown
 
     public class Door : MonoBehaviour
     {
+        public PlayerControls player;
         [Header("Door")]
         public int nb_switches_required = 1;
         public bool reversed_side = false;
@@ -92,6 +93,7 @@ namespace IndieMarc.TopDown
 
         void FixedUpdate()
         {
+            if(player != null) close_speed = player.GetMove() == Vector2.zero ? 10f : 5f;
             //Get nb switch on
             int nb_switch = GetNbSwitches();
 
